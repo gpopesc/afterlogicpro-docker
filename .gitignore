@@ -1,0 +1,5 @@
+.env
+mariadb/*
+www/*
+read_me_before_new_version.txt
+docker-compose.yml

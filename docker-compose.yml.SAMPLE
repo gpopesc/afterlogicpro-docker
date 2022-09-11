@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+    docker-webmail-pro:
+        build: .
+        container_name: afterlogic-pro
+        environment:
+            - TZ=$TZ
+            - USER_NAME=$USER_NAME      
+            - USER_PASSWORD=$USER_PASS  
+        ports:
+            - $HTTPPORT:80
+        volumes:
+            - ./www:/var/www/html
+        depends_on:
+            - db
+
+    db:
+        image: mariadb:latest
+        container_name: afterlogic-db
+        command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+        restart: always
+        ports:
+            - 3308:3306
+        volumes:
+            - ./mariadb:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=your_sql_pass
