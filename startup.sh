@@ -36,6 +36,8 @@ EOF
 chown www-data:www-data -R /var/www/html/*
 chmod 755 -R /var/www/html
 a2enmod rewrite
+a2enmod ssl
+a2ensite default-ssl
 
 /usr/sbin/apache2ctl -D FOREGROUND
 
