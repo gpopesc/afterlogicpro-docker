@@ -32,7 +32,7 @@ tee -a /etc/php/8.1/apache2/php.ini << EOF
 opcache.jit_buffer_size=64M
 opcache.jit=tracing
 EOF
-
+rm -f /var/www/html/index.html
 chown www-data:www-data -R /var/www/html/*
 chmod 755 -R /var/www/html
 a2enmod rewrite
