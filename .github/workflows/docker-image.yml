@@ -1,3 +1,11 @@
+
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -21,4 +29,5 @@ jobs:
         with:
           file: /Dockerfile
           push: true
-          tags: gpopesc/afterlogicpro
+          tags: gpopesc/afterlogicpro:latest
+
