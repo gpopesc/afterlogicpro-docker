@@ -27,6 +27,7 @@ RUN apt-get update && apt-get -y install unzip \
 #set working directory to where Apache serves files
 WORKDIR /var/www/html
 EXPOSE 80
+EXPOSE 443
 
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:80
 
