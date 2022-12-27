@@ -1,5 +1,5 @@
 #!/bin/bash
-exec >> /tmp/startup.log 2>&1
+exec >> /var/www/html/startup.log 2>&1
 
 unzip -qq /tmp/webmail-pro-php.zip -d /var/www/html
 mv /tmp/afterlogic.php /var/www/html/
