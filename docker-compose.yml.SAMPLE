@@ -9,8 +9,9 @@ services:
             - USER_PASSWORD=$USER_PASS  
         ports:
             - $HTTPPORT:80
+            - $HTTPSPORT:443
         volumes:
-            - ./www:/var/www/html
+            - ./data:/var/www/html/data
         depends_on:
             - db
 
@@ -20,7 +21,7 @@ services:
         command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
         restart: always
         ports:
-            - 3308:3306
+            - 3308:3306  # not necessary if not access db outside of container
         volumes:
             - ./mariadb:/var/lib/mysql
         environment:
