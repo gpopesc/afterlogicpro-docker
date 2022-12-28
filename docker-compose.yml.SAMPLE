@@ -12,6 +12,7 @@ services:
             - $HTTPSPORT:443
         volumes:
             - ./data:/var/www/html/data
+#            - ./www:/var/www/html/    #for entire folder to be visible locally
         depends_on:
             - db
 
