@@ -15,9 +15,8 @@ tee -a /etc/apache2/sites-available/000-default.conf << EOF
 </FilesMatch>
 EOF
 
-# enable php short tags:
+# set php variables
 /bin/sed -i "s|short_open_tag = Off|short_open_tag = On|g" /etc/php/8.1/apache2/php.ini
-# Set PHP timezone
 /bin/sed -i 's|;date.timezone =|date.timezone = '${TZ}'|g' /etc/php/8.1/apache2/php.ini
 /bin/sed -i "s|upload_max_filesize = 2M|upload_max_filesize = 256M|g" /etc/php/8.1/apache2/php.ini
 /bin/sed -i "s|post_max_size = 8M|post_max_size = 512M|g" /etc/php/8.1/apache2/php.ini
@@ -35,8 +34,11 @@ EOF
 rm -f /var/www/html/index.html
 
 #internal compatibility with my projects
-chown www-data:root -R /var/www/html/* 
+chown www-data:www-data -R /var/www/html/* 
 chmod 755 -R /var/www/html
+chmod 777 -R /var/www/html/data/files
+
+#enable ssl
 a2enmod rewrite
 a2enmod ssl
 a2ensite default-ssl
