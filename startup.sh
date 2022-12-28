@@ -33,7 +33,9 @@ opcache.jit_buffer_size=64M
 opcache.jit=tracing
 EOF
 rm -f /var/www/html/index.html
-chown www-data:www-data -R /var/www/html/*
+
+#internal compatibility with my projects
+chown www-data:root -R /var/www/html/* 
 chmod 755 -R /var/www/html
 a2enmod rewrite
 a2enmod ssl
